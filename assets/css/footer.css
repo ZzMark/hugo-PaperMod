@@ -52,3 +52,27 @@
 .top-link:focus {
     outline: none;
 }
+
+.sidecar-link {
+    font-size: 12px;
+    position: fixed;
+    top: 70px;
+    left: 0px;
+    z-index: 1000;
+    background: var(--secondary);
+    border-radius: 0 30% 30% 0;
+    width: 30px;
+    height: 30px;
+}
+
+.sidecar-link svg:hover {
+    color: var(--primary);
+}
+
+.sidecar-link:focus {
+    outline: none;
+}
+
+.sidecar-link-show {
+    left: 300px;
+}

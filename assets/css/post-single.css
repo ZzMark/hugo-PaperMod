@@ -337,3 +337,31 @@ h6:hover .anchor {
         padding: 0 21px;
     }
 }
+
+.sidecar {
+    display: none;
+    width: 0;
+    color: #fff;
+    background-color: var(--hljs-bg);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1040;
+    margin-bottom: 0;
+    transition: width 2s;
+    -webkit-transition: width 2s;
+    border: 0;
+    border-radius: 0 10px 10px 0 ;
+}
+.sidecar a {
+    color: #999;
+    border-bottom-color: #555;
+}
+.sidecar a:hover {
+    color: #eee;
+}
+.sidecar-show {
+    width: 300px;
+    display: block;
+}

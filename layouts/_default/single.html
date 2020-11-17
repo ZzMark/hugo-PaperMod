@@ -1,5 +1,18 @@
 {{- define "main" }}
 
+{{ $showToc := .Params.ShowToc }}
+{{ if and (ne $showToc true) (ne $showToc false)}}
+  {{ $showToc = .Site.Params.ShowToc }}
+{{ end }}
+
+
+{{ $tocOpen := .Params.TocOpen }}
+{{ if and (ne $tocOpen true) (ne $tocOpen false)}}
+  {{ $tocOpen = .Site.Params.TocOpen }}
+{{ end }}
+
+{{ $useLeftToc := eq .Site.Params.tocPosition "left" }}
+
 <article class="post-single">
   <header class="post-header">
     <h1 class="post-title">
@@ -30,17 +43,9 @@
   </header>
   {{- partial "cover.html" (dict "cxt" . "IsHome" false) }}
 
-  {{ $showToc := .Params.ShowToc }}
-  {{ if and (ne $showToc true) (ne $showToc false)}}
-    {{ $showToc = .Site.Params.ShowToc }}
-  {{ end }}
   {{- if $showToc }}
-  <div class="toc">
-    {{ $tocOpen := .Params.TocOpen }}
-    {{ if and (ne $tocOpen true) (ne $tocOpen false)}}
-      {{ $tocOpen = .Site.Params.TocOpen }}
-    {{ end }}
-    <details {{if $tocOpen }} open{{ end }}>
+  <div id="toc" class="toc">
+    <details {{ if or $useLeftToc $tocOpen }} open {{ end }}>
       <summary>
         <div class="details" accesskey="c">{{- i18n "toc" | default "Table of Contents" }}</div>
       </summary>
@@ -71,5 +76,45 @@
   {{- partial "comments.html" . }}
   {{- end }}
 </article>
+
+{{ if and $showToc $useLeftToc }}
+<button class="sidecar-link" id="sidecar-link" type="button">
+  <svg t="1605600851749" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3442" width="30" height="30"><path d="M268.944 242.208v111.806H162v427.778h593.056V669.986H862V242.208H268.944z m427.778 369.445v111.805H220.333V533.875h476.389v77.778z m0-136.111H220.333v-63.194H696.721v63.194z m106.945 136.111h-48.611V354.014H327.278v-53.472h476.389v311.111z" p-id="3443" fill="#bfbfbf"></path><path d="M249.5 572.764h126.389v58.333H249.5z" p-id="3444" fill="#bfbfbf"></path></svg>
+</button>
+<script>
+const dShowTocBtn = document.getElementById('sidecar-link')
+
+// hidden to mobile
+if (document.body.offsetWidth > 600) {
+  const dToc = document.getElementById('toc')
+  const aTocClassList = dToc.classList
+  aTocClassList.add('sidecar')
+
+  const fShowTocBtnClick = function (e) {
+    if (e) e.preventDefault();
+
+    if (aTocClassList.contains('sidecar-show')) {
+      // hidden
+      dShowTocBtn.classList.remove('sidecar-link-show')
+      document.body.style.paddingLeft = null
+      aTocClassList.remove('sidecar-show')
+    } else {
+      // show left toc
+      dShowTocBtn.classList.add('sidecar-link-show')
+      document.body.style.paddingLeft = '300px'
+      aTocClassList.add('sidecar-show')
+    }
+  }
+  dShowTocBtn.addEventListener("click", fShowTocBtnClick);
+
+  {{- if $tocOpen }}
+  // init show toc
+  fShowTocBtnClick()
+  {{ end }}
+} else {
+  dShowTocBtn.hidden = true
+}
+</script>
+{{ end }}
 
 {{- end  }}{{/* end main */}}
