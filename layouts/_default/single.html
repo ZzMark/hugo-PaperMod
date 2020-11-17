@@ -29,9 +29,18 @@
     {{- end}}
   </header>
   {{- partial "cover.html" (dict "cxt" . "IsHome" false) }}
-  {{- if .Params.ShowToc }}
+
+  {{ $showToc := .Params.ShowToc }}
+  {{ if and (ne $showToc true) (ne $showToc false)}}
+    {{ $showToc = .Site.Params.ShowToc }}
+  {{ end }}
+  {{- if $showToc }}
   <div class="toc">
-    <details {{if .Params.TocOpen }} open{{ end }}>
+    {{ $tocOpen := .Params.TocOpen }}
+    {{ if and (ne $tocOpen true) (ne $tocOpen false)}}
+      {{ $tocOpen = .Site.Params.TocOpen }}
+    {{ end }}
+    <details {{if $tocOpen }} open{{ end }}>
       <summary>
         <div class="details" accesskey="c">{{- i18n "toc" | default "Table of Contents" }}</div>
       </summary>
