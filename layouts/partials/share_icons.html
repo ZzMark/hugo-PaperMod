@@ -9,6 +9,16 @@
 {{ $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",")  }}
 {{- end }}
 
+{{- if .Site.Params.shareWith.socialShareJs.enable }}
+
+<div class="social-share-cs" style="margin-top: 10px"></div>
+<link rel="stylesheet" href="{{- partial "cdn.html" (slice . "social-share.js" "1.0.16" "dist/css/share.min.css") -}}">
+<script>
+  var socialJsConfig = {{- .Site.Params.shareWith.socialShareJs -}}
+</script>
+<script src="{{- partial "cdn.html" (slice . "social-share.js" "1.0.16" "dist/js/social-share.min.js") -}}" defer onload="socialShare('.social-share-cs', socialJsConfig);"></script>
+
+{{ else }}
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share {{ $title | plainify }} on twitter"
         href="https://twitter.com/intent/tweet/?text={{ $title }}&amp;url={{ $pageurl }}&amp;hashtags={{- $.Scratch.Get "tags" -}}">
@@ -53,3 +63,5 @@
         </svg>
     </a>
 </div>
+
+{{ end }}

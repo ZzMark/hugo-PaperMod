@@ -1,0 +1,4 @@
+params:
+  cdn: 
+    npm: unpkg
+    googleFont: "https://fonts.googleapis.com"

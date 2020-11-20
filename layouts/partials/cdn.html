@@ -1,0 +1,16 @@
+{{- $ := index . 0 -}}
+{{- $cdn := $.Site.Params.cdn.npm -}}
+{{- $package := index . 1 -}}
+{{- $version := index . 2 -}}
+{{- $filename := index . 3 -}}
+
+{{- if eq $cdn "cdnjs" -}}
+{{/* {{- "https://cdnjs.cloudflare.com/ajax/libs/" $package "/" $version "/" (slicestr $filename 5) -}} */}}
+{{/* https://cdnjs.cloudflare.com/ajax/libs/{{ $package }}/{{ $version }}/{{ slicestr $filename 5 }} */}}
+{{- else if eq $cdn "jsdelivr" -}}
+https://cdn.jsdelivr.net/npm/{{ $package }}@{{ $version }}/{{ $filename }}
+{{- else if eq $cdn "unpkg" -}}
+https://unpkg.com/{{ $package }}@{{ $version }}/{{ $filename }}
+{{- else -}}
+{{- errorf "Failed to config \"cdn.npm\" to [%s]. support: [cdnjs, jsdelivr, unpkg]" $cdn -}}
+{{- end }}
