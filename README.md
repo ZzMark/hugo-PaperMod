@@ -4,17 +4,11 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adityatelange_hugo-PaperMod&metric=alert_status)](https://sonarcloud.io/dashboard?id=adityatelange_hugo-PaperMod)
 ![code-size](https://img.shields.io/github/languages/code-size/adityatelange/hugo-PaperMod)
 
-# hugo-PaperMod | [Demo](https://adityatelange.github.io/hugo-PaperMod/)
+# hugo-PaperMod-by-zzmark
 
 ☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive
 
-Hugo PaperMod is a theme based on [hugo-paper](https://github.com/nanxiaobei/hugo-paper).
-
-The goal of this project is add more Features and customization to the og theme.
-
-The [demo site](https://adityatelange.github.io/hugo-PaperMod/) includes a lot of documentation about Installation, Features with few more stuff. Make sure you visit it, to get the awesome hands-on experience and get known about the features ...
-
-ExampleSite can be found here: [exampleSite](https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite). Demo is built up with exampleSite as source.
+based on [adityatelange/hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod) modify to oneself.
 
 ---
 
@@ -32,6 +26,18 @@ Read this post For More Details => [hugo-PaperMod - Installation](https://aditya
 ---
 
 ## Features/Mods
+
+based on [adityatelange/hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod). my modes to:
+
+- TOC:
+  - optional TOC position `left`, `top`
+  - can config global `ShotTOC`, `TocOpen`
+- support `@media(prefers-color-scheme)` auto change dark mode.
+- optional social-share.js friendly chinese.
+- add cdn config to accelerate some resource.
+- personalized layouts by mine
+
+based on [nanxiaobei/hugo-paper](https://github.com/nanxiaobei/hugo-paper). 
 
 -   Uses Hugo's asset generator with pipelining, fingerprinting, bundling and minification by default.
 -   3 Modes:
@@ -65,6 +71,8 @@ Read this post For More Details => [Social-Icons](https://adityatelange.github.i
 
 Read this post For More Details => [How To's Guide](https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-how-to/)
 
+<!--
+
 ---
 
 ## [LightHouse Report](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fadityatelange.github.io%2Fhugo-PaperMod%2F)
@@ -90,3 +98,5 @@ create a new [Pull Request](https://github.com/adityatelange/hugo-PaperMod/pulls
 [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/adityatelange/hugo-PaperMod)](https://github.com/adityatelange/hugo-PaperMod/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/adityatelange/hugo-papermod)](https://github.com/adityatelange/hugo-PaperMod/pulls?q=is%3Aopen+is%3Apr)
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/adityatelange/hugo-papermod)](https://github.com/adityatelange/hugo-PaperMod/pulls?q=is%3Apr+is%3Aclosed)
+
+-->
